@@ -1,0 +1,36 @@
+<div class="content-container">
+  <ng-container>
+    <h2 class="project-name centered">{{experienceData.title}}</h2>
+    <h3 class="description-title" *ngIf="currentPage === 1">Project Description</h3>
+    <p class="description" *ngIf="currentPage === 1">
+      <ng-container *ngFor="let item of experienceData.description.split('. '); let i = index">
+        <span>{{i+1}}. {{item}}.</span><br />
+      </ng-container>
+    </p>
+    <dl class="tech-stack" *ngIf="currentPage === 1">
+      <dt>Core Technologies</dt>
+      <dd>
+        <ng-container *ngFor="let item of experienceData.techSpec.Core.split(', '); let i = index">
+          <span>{{i+1}}. {{item}}.</span><br />
+        </ng-container>
+      </dd>
+      <dt *ngIf="experienceData.techSpec.Server">Server & Tools set</dt>
+      <dd *ngIf="experienceData.techSpec.Server">{{experienceData.techSpec.Server}}</dd>
+      <dt *ngIf="experienceData.techSpec.codeBase">Code Base</dt>
+      <dd *ngIf="experienceData.techSpec.codeBase">{{experienceData.techSpec.codeBase}}</dd>
+    </dl>
+    <section class="tech-stack-notes" *ngIf="currentPage === 1">{{experienceData.techSpec.notes}}</section>
+    <div class="contributions" *ngIf="currentPage === 2 && experienceData.Contributions.length > 1">
+      <h3>Personal Contribution</h3>
+      <ul>
+        <li *ngFor="let contribution of experienceData.Contributions">
+          {{contribution}}
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>
+<div class="controls-container hide">
+  <button class="text previous" (click)="changePage('PREVIOUS')" [disabled]="currentPage < 2">Previous</button>
+  <button class="text next" (click)="changePage('NEXT')" [disabled]="!hasMorePages && currentPage > 3">Next</button>
+</div>

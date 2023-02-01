@@ -1,0 +1,113 @@
+@import '../../styles.scss';
+
+@mixin bgText {
+  color: #ae7821;
+  font-family: cursive;
+  font-style: italic;
+  font-size: 36px;
+}
+
+@media screen {
+  .bg-container {
+    height: 97vh;
+    width: 90%;
+
+    @media screen and (max-width: $screen-sm) {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    #header-container {
+      #header {
+        dt {
+          margin: revert;
+          &:after {
+            @include bgText;
+            content: '<html>'
+          }
+        }
+        dd {
+          margin: revert;
+          &:after {
+            @include bgText;
+            content: '<body>';
+          }
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      margin: 0 0 20px 0;
+      .home-content {
+        margin: 0px;
+        min-height: 66vh;
+      }
+      .full-content {
+        margin: 0px;
+        width: 100%;
+      }
+      .side-content {
+        position: absolute;
+        top: 10px;
+        right: 50px;
+        height: 50px;
+        width: 50px;
+        img {
+          height: 100px;
+          width: 100px;
+        }
+      }
+    }
+    #footer-container {
+      #footer {
+        dt {
+          margin-left: 40px;
+          &:after {
+            @include bgText;
+            content: '</body>';
+          }
+        }
+        dd {
+          &:after {
+            @include bgText;
+            content: '</html>';
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-md) {
+  .bg-container {
+    .content {
+      flex-direction: column;
+      .home-content {
+        width: 100%;
+      }
+      .side-content {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $screen-md + 1) and (max-width: $screen-lg) {
+  .bg-container {
+    .content {
+      flex-direction: row;
+      .home-content {
+        width: 100%;
+      }
+      .side-content {
+        width: 30%;
+        justify-content: center;
+        display: flex;
+      }
+    }
+  }
+}

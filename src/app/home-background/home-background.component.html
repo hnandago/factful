@@ -1,0 +1,19 @@
+<div class="bg-container">
+  <span id="header-container">
+    <dl id="header">
+      <dt></dt>
+      <dd></dd>
+    </dl>
+  </span>
+  <div class="content">
+    <div [class.full-content]="hideImage" [class.home-content]="!hideImage">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <span id="footer-container">
+    <dl id="footer">
+      <dt></dt>
+      <dd></dd>
+    </dl>
+  </span>
+</div>
